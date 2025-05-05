@@ -4,31 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
+@Keep
 public class MyparcelableClass implements Parcelable {
     private String name;
     private int age;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     protected MyparcelableClass(Parcel in) {
     }
 
+    @Keep
     public static final Creator<MyparcelableClass> CREATOR = new Creator<MyparcelableClass>() {
         @Override
         public MyparcelableClass createFromParcel(Parcel in) {
@@ -54,5 +41,21 @@ public class MyparcelableClass implements Parcelable {
         dest.writeInt(age);
 
         Log.d("MyparcelableClass","age = " +age);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
